@@ -12,29 +12,10 @@ public class BurgerParamTest {
     private final List<Ingredient> ingredients;
     Burger burger = new Burger();
     private final List<String> expected;
-
-/*    public BurgerParamTest(Ingredient ingredient1, Ingredient ingredient2, String expected1, String expected2) {
-        this.ingredients.add(ingredient1);
-        this.ingredients.add(ingredient2);
-        this.expected.add(expected1);
-        this.expected.add(expected2);
-
-    }*/
-
     public BurgerParamTest(List<Ingredient> ingredients, List<String> expected) {
         this.expected = expected;
         this.ingredients = ingredients;
     }
-
-    /*    @Parameterized.Parameters
-        public static Object[][] getConstructorParams() {
-            return new Object[][]{
-                    {new Ingredient(IngredientType.SAUCE, "hot sauce", 100f),
-                            new Ingredient(IngredientType.FILLING, "sour cream", 200f),
-                            String.format("%s, %s, %s%n", IngredientType.SAUCE, "hot sauce", 100f),
-                            String.format("%s, %s, %s%n", IngredientType.FILLING, "sour cream", 200f)}
-            };
-        }*/
     @Parameterized.Parameters
     public static Object[][] getConstructorParams() {
         return new Object[][]{

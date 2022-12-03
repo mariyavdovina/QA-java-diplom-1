@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(Parameterized.class)
@@ -12,15 +13,19 @@ public class BurgerParamTest {
     private final List<Ingredient> ingredients;
     Burger burger = new Burger();
     private final List<String> expected;
-    public BurgerParamTest(List<Ingredient> ingredients, List<String> expected) {
-        this.expected = expected;
+    public BurgerParamTest(List<Ingredient> ingredients) {
+        this.expected = new ArrayList<>();
         this.ingredients = ingredients;
+        for(Ingredient ingredient:ingredients){
+            this.expected.add(String.format("%s, %s, %s%n", ingredient.getType(), ingredient.name,ingredient.getPrice()));
+        }
+
     }
     @Parameterized.Parameters
     public static Object[][] getConstructorParams() {
         return new Object[][]{
-                {List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 100f), new Ingredient(IngredientType.FILLING, "sour cream", 200f)),
-                        List.of(String.format("%s, %s, %s%n", IngredientType.SAUCE, "hot sauce", 100f),String.format("%s, %s, %s%n", IngredientType.FILLING, "sour cream", 200f))}
+                {List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 100f), new Ingredient(IngredientType.FILLING, "sour cream", 200f))}
+                //{List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 100f))}
         };
     }
 

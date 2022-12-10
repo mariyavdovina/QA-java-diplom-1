@@ -14,16 +14,16 @@ public class IngredientTest {
 
     @Test
     public void getPrice() {
-        Assert.assertEquals(ingredient.getPrice(), 105.78f,0);
+        Assert.assertEquals(105.78f,ingredient.getPrice(), 0);
     }
 
     @Test
     public void getName() {
-        Assert.assertEquals(ingredient.getName(),"sauce");
+        Assert.assertEquals("sauce",ingredient.getName());
     }
 
     @Test
     public void getType() {
-        Assert.assertEquals(ingredient.getType(),IngredientType.SAUCE);
+        Assert.assertEquals(IngredientType.SAUCE,ingredient.getType());
     }
 }

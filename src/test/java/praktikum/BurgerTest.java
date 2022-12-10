@@ -23,10 +23,23 @@ public class BurgerTest {
     }
 
     @Test
-    public void testGetPriceAndGetReceiptWorksCorrectly() {
+    public void testGetPriceWorksCorrectly() {
         String bunName = "bunName";
         String ingredientType = "ingredientType";
 
+        burger.setBuns(bun);
+        Mockito.when(bun.getPrice()).thenReturn(Float.valueOf(100));
+        Mockito.when(ingredients.size()).thenReturn(2);
+        for (int i = 0; i < ingredients.size(); i++) {
+            Mockito.when(ingredients.get(i)).thenReturn(new Ingredient(IngredientType.SAUCE, ingredientType, 100f));
+            burger.addIngredient(ingredients.get(i));
+        }
+        Assert.assertEquals(burger.getPrice(), 400f, 0);
+    }
+    @Test
+    public void testGetReceiptWorksCorrectly() {
+        String bunName = "bunName";
+        String ingredientType = "ingredientType";
         burger.setBuns(bun);
         Mockito.when(bun.getPrice()).thenReturn(Float.valueOf(100));
         Mockito.when(bun.getName()).thenReturn(bunName);
@@ -43,8 +56,6 @@ public class BurgerTest {
         }
         actual.append(String.format("(==== %s ====)%n", bunName));
         actual.append(String.format("%nPrice: %f%n", 400F));
-
-        Assert.assertEquals(burger.getPrice(), 400f, 0);
         Assert.assertEquals(burger.getReceipt(), actual.toString());
     }
 }

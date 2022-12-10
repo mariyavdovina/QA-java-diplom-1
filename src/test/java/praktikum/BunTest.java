@@ -14,11 +14,11 @@ public class BunTest {
 
     @Test
     public void getName() {
-        Assert.assertEquals(bun.getName(),"bun");
+        Assert.assertEquals("bun",bun.getName());
     }
 
     @Test
     public void getPrice() {
-        Assert.assertEquals(bun.getPrice(),95.5f,0);
+        Assert.assertEquals(95.5f,bun.getPrice(),0);
     }
 }
